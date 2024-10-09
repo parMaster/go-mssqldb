@@ -9,7 +9,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/policy"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	mssql "github.com/microsoft/go-mssqldb"
+	mssql "github.com/parMaster/go-mssqldb"
 )
 
 var (

@@ -11,9 +11,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/microsoft/go-mssqldb/internal/github.com/swisscom/mssql-always-encrypted/pkg/algorithms"
-	"github.com/microsoft/go-mssqldb/internal/github.com/swisscom/mssql-always-encrypted/pkg/encryption"
-	"github.com/microsoft/go-mssqldb/internal/github.com/swisscom/mssql-always-encrypted/pkg/keys"
+	"github.com/parMaster/go-mssqldb/internal/github.com/swisscom/mssql-always-encrypted/pkg/algorithms"
+	"github.com/parMaster/go-mssqldb/internal/github.com/swisscom/mssql-always-encrypted/pkg/encryption"
+	"github.com/parMaster/go-mssqldb/internal/github.com/swisscom/mssql-always-encrypted/pkg/keys"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/text/encoding/unicode"
 )

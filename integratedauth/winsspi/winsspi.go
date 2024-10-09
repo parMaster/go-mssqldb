@@ -1,3 +1,4 @@
+//go:build windows
 // +build windows
 
 package winsspi
@@ -8,8 +9,8 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/microsoft/go-mssqldb/integratedauth"
-	"github.com/microsoft/go-mssqldb/msdsn"
+	"github.com/parMaster/go-mssqldb/integratedauth"
+	"github.com/parMaster/go-mssqldb/msdsn"
 )
 
 var (

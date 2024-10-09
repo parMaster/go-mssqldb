@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/microsoft/go-mssqldb/msdsn"
+	"github.com/parMaster/go-mssqldb/msdsn"
 )
 
 var (

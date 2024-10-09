@@ -32,12 +32,13 @@ import (
 	"database/sql"
 	"flag"
 	"fmt"
-	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/aws/aws-sdk-go-v2/feature/rds/auth"
-	_ "github.com/microsoft/go-mssqldb"
-	mssql "github.com/microsoft/go-mssqldb"
 	"log"
 	"strconv"
+
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/feature/rds/auth"
+	_ "github.com/parMaster/go-mssqldb"
+	mssql "github.com/parMaster/go-mssqldb"
 )
 
 var (
