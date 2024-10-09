@@ -1,4 +1,4 @@
-module github.com/microsoft/go-mssqldb
+module github.com/parMaster/go-mssqldb
 
 go 1.17
 
@@ -9,6 +9,7 @@ require (
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9
 	github.com/golang-sql/sqlexp v0.1.0
 	github.com/jcmturner/gokrb5/v8 v8.4.4
+	github.com/microsoft/go-mssqldb v1.7.2
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/crypto v0.21.0
 	golang.org/x/sys v0.18.0
