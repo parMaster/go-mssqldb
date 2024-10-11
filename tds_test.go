@@ -709,10 +709,13 @@ func TestLeakedConnections(t *testing.T) {
 		t.Fatal("Ping with good credentials should not fail, but got error:", err.Error())
 	}
 
-	var localNetAddr string
+	var localNetAddr sql.NullString
 	err = goodConn.QueryRow("SELECT local_net_address FROM sys.dm_exec_connections WHERE session_id=@@SPID").Scan(&localNetAddr)
 	if err != nil {
 		t.Fatal("cannot scan local_net_address value", err)
+	}
+	if !localNetAddr.Valid {
+		t.Fatal("local_net_address should not be NULL")
 	}
 
 	// Remember the number of open connections from local_net_address, excluding the current one
