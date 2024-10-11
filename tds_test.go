@@ -714,13 +714,17 @@ func TestLeakedConnections(t *testing.T) {
 	if err != nil {
 		t.Fatal("cannot scan local_net_address value", err)
 	}
-	if !localNetAddr.Valid {
-		t.Fatal("local_net_address should not be NULL")
-	}
 
 	// Remember the number of open connections from local_net_address, excluding the current one
+	// NULL value is possible, particularly for non-tcp local connections
 	var openConnections int
-	err = goodConn.QueryRow("SELECT COUNT(*) AS openConnections FROM sys.dm_exec_connections WHERE session_id!=@@SPID AND local_net_address=@p1", localNetAddr).Scan(&openConnections)
+	err = goodConn.QueryRow(`
+		SELECT COUNT(*) AS openConnections 
+		FROM sys.dm_exec_connections 
+		WHERE session_id != @@SPID 
+		AND ((@p1 IS NULL AND local_net_address IS NULL) 
+			OR local_net_address = @p1)`,
+		localNetAddr).Scan(&openConnections)
 	if err != nil {
 		t.Fatal("cannot scan value", err)
 	}
@@ -741,7 +745,13 @@ func TestLeakedConnections(t *testing.T) {
 
 	// Check if the number of open connections is the same as before
 	var newOpenConnections int
-	err = goodConn.QueryRow("SELECT COUNT(*) AS openConnections FROM sys.dm_exec_connections WHERE session_id!=@@SPID AND local_net_address=@p1", localNetAddr).Scan(&newOpenConnections)
+	err = goodConn.QueryRow(`
+		SELECT COUNT(*) AS openConnections 
+		FROM sys.dm_exec_connections 
+		WHERE session_id != @@SPID 
+		AND ((@p1 IS NULL AND local_net_address IS NULL) 
+			OR local_net_address = @p1)`,
+		localNetAddr).Scan(&newOpenConnections)
 	if err != nil {
 		t.Fatal("cannot scan value", err)
 	}
